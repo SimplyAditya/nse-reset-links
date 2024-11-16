@@ -11,7 +11,7 @@ const Navbar = () => {
                         className="h-8"
                         alt="NSE"
                     />
-                    <span className="lg:text-3xl font-semibold whitespace-nowrap dark:text-white">
+                    <span className="lg:text-3xl font-semibold whitespace-nowrap text-white">
                         NSE Study Data Reset Links
                     </span>
                 </a>
