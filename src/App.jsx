@@ -37,7 +37,7 @@ function App() {
       button: niftyBankButtonActive
     },
   ];
-
+   
   const resetHandler=async (endpoint)=>{
     setNiftyAllButtonActive(false);
     setNifty500ButtonActive(false);
