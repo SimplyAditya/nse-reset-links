@@ -9,32 +9,39 @@ function App() {
   const [nifty50ButtonActive, setNifty50ButtonActive] = useState(true);
   const [niftyBankButtonActive, setNiftyBankButtonActive] = useState(true);
   const [securitiesButtonActive, setSecuritiesButtonActive] = useState(true);
-
+  const [niftyTotalButtonActive, setNiftyTotalButtonActive] = useState(true);
+  const url = import.meta.env.VITE_URL;
+  const totalUrl = import.meta.env.VITE_NIFTY_TOTAL_URL;
   const buttons = [
     {
       text: "Reset Nifty All Data",
-      endpoint: "/resetniftyalldata",
+      endpoint: `${url}/resetniftyalldata`,
       button: niftyAllButtonActive
     },
     {
       text: "Reset Nifty 500 Data",
-      endpoint: "/resetnifty500data",
+      endpoint: `${url}/resetnifty500data`,
       button: nifty500ButtonActive
     },
     {
       text: "Reset Securities F&O Data",
-      endpoint: "/resetSecuritiesdata",
+      endpoint: `${url}/resetSecuritiesdata`,
       button: securitiesButtonActive
     },
     {
       text: "Reset Nifty 50 Data",
-      endpoint: "/resetnifty50data",
+      endpoint: `${url}/resetnifty50data`,
       button: nifty50ButtonActive
     },
     {
       text: "Reset Nifty Bank Data",
-      endpoint: "/resetniftyBankdata",
+      endpoint: `${url}/resetniftyBankdata`,
       button: niftyBankButtonActive
+    },
+    {
+      text: "Reset Nifty Total Data",
+      endpoint: `${totalUrl}/resetniftytotaldata`,
+      button: niftyTotalButtonActive
     },
   ];
    
@@ -44,10 +51,11 @@ function App() {
     setNifty50ButtonActive(false);
     setNiftyBankButtonActive(false);
     setSecuritiesButtonActive(false);
-    const url = import.meta.env.VITE_URL;
+    setNiftyTotalButtonActive(false);
+
     const confirmation = window.confirm("Are You Sure");
     if(confirmation){
-      const response = await axios.get(`${url}${endpoint}`);
+      const response = await axios.get(`${endpoint}`);
       if(response.status === 200){
         window.alert("Data has been updated, If the data is incorrect please contact Developer")
       }else{
@@ -59,6 +67,7 @@ function App() {
     setNifty50ButtonActive(true);
     setNiftyBankButtonActive(true);
     setSecuritiesButtonActive(true);
+    setNiftyTotalButtonActive(true);
   }
 
   return (
